@@ -1,19 +1,28 @@
-node {
-  
-        stage('Build') {
-            
-                echo 'Building..'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/khetreJagdish/Angular-8.git']]])
-        
+pipeline {
+
+    agent any
+    tools {
+        maven 'Maven_3.5.2' 
+    }
+    stages {
+        stage('Compile stage') {
+            steps {
+                bat "mvn clean compile" 
         }
-        stage('Test') {
-           
-                echo 'Testing..'
-            
+    }
+
+         stage('testing stage') {
+             steps {
+                bat "mvn test"
         }
-        stage('Deploy') {
-            
-                echo 'Deploying....'
-            
+    }
+
+          stage('deployment stage') {
+              steps {
+                bat "mvn deploy"
         }
+    }
+
+  }
+
 }
