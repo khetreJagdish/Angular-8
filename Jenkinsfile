@@ -3,7 +3,7 @@ node {
         stage('Build') {
             
                 echo 'Building..'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:khetreJagdish/Angular-8.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/khetreJagdish/Angular-8.git']]])
         
         }
         stage('Test') {
